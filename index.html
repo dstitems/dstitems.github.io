@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Don't Starve Together Item List</title>
+<script src="vue.js"></script>
+<style>
+@font-face {
+    font-family: 'belisa_plumilla_manualregular';
+    src: url('belisa_plumilla-webfont.eot');
+    src: url('belisa_plumilla-webfont.woff2') format('woff2'),
+         url('belisa_plumilla-webfont.woff') format('woff'),
+         url('belisa_plumilla-webfont.ttf') format('truetype'),
+         url('belisa_plumilla-webfont.svg#belisa_plumilla_manualregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: url(bg_texture.jpg);
+    font-size: 2em;
+    font-family: belisa_plumilla_manualregular, "微软雅黑";
+}
+
+#dts-item-list {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 30px;
+}
+
+th, td{
+    padding: 2px 0;
+    text-align: center;
+}
+
+th.icon, td.icon {
+    width: 150px;
+}
+
+th.name, td.name,
+th.chs, td.chs {
+    width: 250px;
+}
+
+th.debug, td.debug {
+    width: 330px;
+}
+
+td.debug {
+    font-size: 0.5em;
+}
+
+input {
+    font-size: 1em;
+    font-family: belisa_plumilla_manualregular, "微软雅黑";
+    width: 100%;
+    line-height: 1.6em;
+    padding: 0 0.4em;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    outline: none;
+}
+</style>
+</head>
+<body>
+<div id="dts-item-list">
+<h1>Don't Starve Together Item List</h1>
+<input type="text" v-model="keyword" placeholder="Search Items...">
+<table>
+<thead>
+    <tr>
+        <th class="icon"></th>
+        <th class="name">Name</th>
+        <th class="chs">Chinese</th>
+        <th class="debug">Debug</th>
+    </tr>
+</thead>
+<tbody>
+    <tr v-for="item in searchItem(items)">
+        <td class="icon">
+            <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
+        </td>
+        <td class="name">
+            {{ item.name }}
+        </td>
+        <td class="chs">
+            {{ item.chs }}
+        </td>
+        <td class="debug">
+            <code>c_give("{{ item.debug }}",1)</code>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>
+<script src="items.js"></script>
+</body>
+</html>
