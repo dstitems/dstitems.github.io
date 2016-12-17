@@ -36,6 +36,12 @@ body {
 
 h1 {
     text-align: center;
+    line-height: 160px;
+}
+
+h1 img {
+    vertical-align: bottom;
+    margin-right: 10px;
 }
 
 table {
@@ -76,38 +82,84 @@ input {
     border: none;
     outline: none;
 }
+
+.main {
+    position: relative;
+    z-index: 10;
+}
+
+.shadow {
+    position: absolute;
+    z-index: 1;
+    filter: blur(3px) brightness(0);
+    opacity: 0.15;
+    top: -5px;
+    left: -5px;
+}
 </style>
 </head>
 <body>
 <div id="dts-item-list">
-<h1>Don't Starve Together Item List</h1>
-<input type="text" v-model="keyword" placeholder="Search Items...">
-<table>
-<thead>
-    <tr>
-        <th class="icon"></th>
-        <th class="name">Name</th>
-        <th class="chs">Chinese</th>
-        <th class="debug">Debug</th>
-    </tr>
-</thead>
-<tbody>
-    <tr v-for="item in searchItem(items)">
-        <td class="icon">
-            <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
-        </td>
-        <td class="name">
-            {{ item.name }}
-        </td>
-        <td class="chs">
-            {{ item.chs }}
-        </td>
-        <td class="debug">
-            <code>c_give("{{ item.debug }}",1)</code>
-        </td>
-    </tr>
-</tbody>
-</table>
+<div class="main">
+    <h1><img src="Dont_Starve_Together_Logo.png" width="150" height="172">Item List</h1>
+    <input type="text" v-model="keyword" placeholder="Search Items...">
+    <table>
+    <thead>
+        <tr>
+            <th class="icon"></th>
+            <th class="name">Name</th>
+            <th class="chs">Chinese</th>
+            <th class="debug">Debug</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="item in searchItem(items)">
+            <td class="icon">
+                <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
+            </td>
+            <td class="name">
+                {{ item.name }}
+            </td>
+            <td class="chs">
+                {{ item.chs }}
+            </td>
+            <td class="debug">
+                <code>c_give("{{ item.debug }}",1)</code>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+<div class="shadow">
+    <h1><img src="Dont_Starve_Together_Logo.png" width="150" height="172">Item List</h1>
+    <input type="text" disabled>
+    <table>
+    <thead>
+        <tr>
+            <th class="icon"></th>
+            <th class="name">Name</th>
+            <th class="chs">Chinese</th>
+            <th class="debug">Debug</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="item in searchItem(items)">
+            <td class="icon">
+                <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
+            </td>
+            <td class="name">
+                {{ item.name }}
+            </td>
+            <td class="chs">
+                {{ item.chs }}
+            </td>
+            <td class="debug">
+                <code>c_give("{{ item.debug }}",1)</code>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
 </div>
 <script src="items.js"></script>
 </body>
