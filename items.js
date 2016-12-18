@@ -426,7 +426,7 @@ var dst = new Vue({
             {
                 "icon":"Crow Feather.png",
                 "name":"Crow Feather",
-                "chs":"乌鸦羽毛",
+                "chs":"黑色羽毛",
                 "debug":"feather_crow"
             },
             {
