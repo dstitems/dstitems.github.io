@@ -1802,6 +1802,12 @@ var dst = new Vue({
     filters: {
         itemicon: function(filename) {
             return filename.replace(/\s/g, '_');
+        },
+        itemiconid: function(filename) {
+            return 'gopng_' + filename.replace(/\s/g, '_').replace(/'/g, '').split('.')[0];
+        },
+        itemiconouterid: function(filename) {
+            return 'gopng_' + filename.replace(/\s/g, '_').replace(/'/g, '').split('.')[0] + '_outer';
         }
     },
     methods: {

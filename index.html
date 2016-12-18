@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <link rel="icon" href="Rabbit.png" />
+<link rel="stylesheet" type="text/css" href="icons.css">
 <title>Don't Starve Together Item List</title>
 <script src="vue.js"></script>
 <style>
@@ -96,6 +97,10 @@ input {
     top: -5px;
     left: -5px;
 }
+
+.icon span {
+    display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -115,7 +120,9 @@ input {
     <tbody>
         <tr v-for="item in searchItem(items)">
             <td class="icon">
-                <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
+                <span v-bind:id="item.icon | itemiconouterid">
+                    <div v-bind:id="item.icon | itemiconid"></div>
+                </span>
             </td>
             <td class="name">
                 {{ item.name }}
@@ -145,7 +152,9 @@ input {
     <tbody>
         <tr v-for="item in searchItem(items)">
             <td class="icon">
-                <img v-bind:src="item.icon | itemicon" v-bind:alt="item.name">
+                <span v-bind:id="item.icon | itemiconouterid">
+                    <div v-bind:id="item.icon | itemiconid"></div>
+                </span>
             </td>
             <td class="name">
                 {{ item.name }}
